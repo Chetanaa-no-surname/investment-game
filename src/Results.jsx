@@ -10,25 +10,27 @@ export default function Results({ players, numPlayers, onReset }) {
 
   return (
     <div className="card results-card">
-      <div className="card-eyebrow">Round Complete</div>
-      <h2 className="card-title">Results</h2>
+      <h2>Results</h2>
 
       {/* Pool Summary */}
       <div className="pool-summary">
         <div className="pool-stat">
-          <span className="pool-label">Total Asset B Pool</span>
-          <span className="pool-value">{fmt(totalPoolB)}</span>
+          <strong>Total Asset B Pool: {fmt(totalPoolB)} </strong>
         </div>
-        <div className="pool-arrow">→ +50% →</div>
+        
+
+        <div> +50% </div>
+
         <div className="pool-stat highlight">
-          <span className="pool-label">Boosted Pool</span>
-          <span className="pool-value">{fmt(boostedPool)}</span>
+          <strong>Boosted Asset B Pool: {fmt(boostedPool)}</strong>
         </div>
-        <div className="pool-arrow">÷ {numPlayers} →</div>
+
+        <p> Split by {numPlayers} Players</p>
+
         <div className="pool-stat">
-          <span className="pool-label">Each Player Gets</span>
-          <span className="pool-value">{fmt(payoutPerPlayer)}</span>
+          <strong><i>Each Player Gets: {fmt(payoutPerPlayer)}</i></strong>
         </div>
+
       </div>
 
       {/* Player Breakdown Table */}
@@ -39,7 +41,7 @@ export default function Results({ players, numPlayers, onReset }) {
               <th>Player</th>
               <th>Asset A</th>
               <th>Asset B Invested</th>
-              <th>B Payout</th>
+              <th>Asset B Payout</th>
               <th>Final Total</th>
             </tr>
           </thead>
@@ -48,12 +50,11 @@ export default function Results({ players, numPlayers, onReset }) {
               <tr key={p.name} className={p.finalPayout === topPayout ? "top-row" : ""}>
                 <td className="player-name-cell">
                   {p.name}
-                  {p.finalPayout === topPayout && <span className="winner-badge">↑ best</span>}
                 </td>
                 <td>{fmt(p.assetA)}</td>
                 <td>{fmt(p.assetB)}</td>
-                <td className="b-payout">{fmt(p.bPayout)}</td>
-                <td className="final-payout">{fmt(p.finalPayout)}</td>
+                <td>{fmt(p.bPayout)}</td>
+                <td>{fmt(p.finalPayout)}</td>
               </tr>
             ))}
           </tbody>

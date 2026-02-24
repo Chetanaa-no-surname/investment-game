@@ -48,7 +48,7 @@ export default function PlayerInput({ player, playerIndex, totalPlayers, onSubmi
 
     return (
         <div className="card input-card">
-            <div className="progress-bar-wrap">
+            <div>
                 {Array.from({ length: totalPlayers }).map((_, i) => (
                 <div
                     key={i}
@@ -60,20 +60,20 @@ export default function PlayerInput({ player, playerIndex, totalPlayers, onSubmi
             <div className="players-info">
                 Player {playerIndex + 1} of {totalPlayers}
             </div>
-            <h2 className="card-title">{player.name}'s Turn</h2>
-            <p className="card-desc">
-                Allocate your <strong>$100</strong> between the two assets. Pass the device when done.
+            <h2>{player.name}'s Turn</h2>
+            <p>
+                Allocate your <strong>$100</strong> between the two assets. Click the button to Submit and Pass the device when done.
             </p>
 
             <form onSubmit={handleSubmit} className="input-form">
                 <div className="asset-inputs">
                     <div className="asset-field">
-                        <label className="asset-label">
-                            <span className="asset-badge safe">Asset A</span>
-                            <span className="asset-hint">Riskless — returned in full</span>
+                        <label style={{ marginBottom: "15px" }}>
+                            <span><strong>Asset A → </strong></span>
+                            <span>Riskless: Your investment is returned in full.</span>
                         </label>
                         <div className="dollar-input">
-                            <span className="dollar-sign">$</span>
+                            <span>$</span>
                             <input
                                 className={`number-input ${error ? "input-error" : ""}`}
                                 type="number"
@@ -87,15 +87,15 @@ export default function PlayerInput({ player, playerIndex, totalPlayers, onSubmi
                         </div>
                     </div>
 
-                    <div className="asset-divider">+</div>
+                    <div>+</div>
 
                     <div className="asset-field">
-                        <label className="asset-label">
-                            <span className="asset-badge pool">Asset B</span>
-                            <span className="asset-hint">Pooled — grows 50%, split equally</span>
+                        <label style={{ marginBottom: "15px" }}>
+                            <span><strong>Asset B → </strong></span>
+                            <span>Pooled: Total contributions grow by 50%, split equally among all players.</span>
                         </label>
                         <div className="dollar-input">
-                            <span className="dollar-sign">$</span>
+                            <span>$</span>
                             <input
                                 className={`number-input ${error ? "input-error" : ""}`}
                                 type="number"
@@ -110,8 +110,8 @@ export default function PlayerInput({ player, playerIndex, totalPlayers, onSubmi
                     </div>
                 </div>
 
-                <div className="remaining-indicator" style={{ borderColor: remainingColor }}>
-                    <span>Remaining to allocate:</span>
+                <div className="remaining-indicator" style={{ borderColor: remainingColor, marginTop: "10px", marginBottom: "10px" }}>
+                    <span>Remaining to allocate: </span>
                     <strong style={{ color: remainingColor }}>${remaining}</strong>
                 </div>
 

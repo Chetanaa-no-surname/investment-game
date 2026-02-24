@@ -38,15 +38,14 @@ export default function Setup({onComplete}) {
 
     return (
         <div className="setup-card">
-            <div> Game Setup </div>
-            <h2>Configure Your Session</h2>
-            <p className="card-description">
-                Each player starts with <strong>$100</strong> to allocate between two assets. Choose wisely — your decisions affect everyone.
+            <h2> Game Setup </h2>
+            <p>
+                Each player starts with <strong>$100</strong> to allocate between two assets. Choose wisely, your decisions affect <i>everyone</i>.
             </p>
 
         <form onSubmit={handleSubmit} className="setup-form">
             <div>
-                <label className="field-label">Number of Players</label>
+                <label>Number of Players</label>
                 <div className="player-count-row">
                     {[2, 3, 4].map((n) => (
                     <button
@@ -63,8 +62,8 @@ export default function Setup({onComplete}) {
 
             <div className="names-grid">
                 {names.map((name, i) => (
-                    <div key={i} className="field-group">
-                        <label className="field-label">Player {i + 1}</label>
+                    <div key={i} style={{ padding: "5px 0px" }}>
+                        <label> Player {i + 1}: </label>
                         <input
                             className={`text-input ${errors[i] ? "input-error" : ""}`}
                             type="text"
@@ -73,25 +72,25 @@ export default function Setup({onComplete}) {
                             maxLength={20}
                             onChange={(e) => handleNameChange(i, e.target.value)}
                         />
-                        {errors[i] && <span className="error-msg">{errors[i]}</span>}
+                        { errors[i] && <span className="error-msg">{ errors[i] }</span>}
                     </div>
                 ))}
             </div>
 
-            <button className="btn-primary" type="submit">
+            <button className="btn-primary" type="submit" style={{ marginTop: "10px", marginBottom: "20px" }}>
             Start Game →
             </button>
         </form>
 
         <div className="rules-box">
-            <div className="rules-title">How it works</div>
-            <div className="rule-item">
-                <span className="rule-badge safe">Asset A</span>
-                <span>Riskless — your investment is returned in full.</span>
+            <h3><strong>How it works</strong></h3>
+            <div>
+                <span><strong>Asset A → </strong></span>
+                <span>Riskless: Your investment is returned in full.</span>
             </div>
-            <div className="rule-item">
-                <span className="rule-badge pool">Asset B</span>
-                <span>Pooled — all contributions grow by 50%, split equally among all players.</span>
+            <div>
+                <span><strong>Asset B → </strong></span>
+                <span>Pooled: Total contributions grow by 50%, split equally among all players.</span>
             </div>
         </div>
     </div>
