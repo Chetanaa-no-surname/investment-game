@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Setup from "./Setup";
+import PlayerInput from "./PlayerInput";
 import "./App.css";
 
 const initialState = {
@@ -25,6 +26,24 @@ export default function App() {
 
   const handleReset = () => setGame(initialState);
 
+  const handlePlayerSubmit = ({ assetA, assetB }) => {
+    setGame((prev) => {
+      const updatedPlayers = prev.players.map((p, i) =>
+        i === prev.currentPlayerIndex
+          ? { ...p, assetA, assetB, submitted: true }
+          : p
+      );
+      const nextIndex = prev.currentPlayerIndex + 1;
+      const allDone = nextIndex >= prev.numPlayers;
+      return {
+        ...prev,
+        players: updatedPlayers,
+        currentPlayerIndex: nextIndex,
+        phase: allDone ? "results" : "input",
+      };
+    });
+  };
+
   return (
     <div className="app">
       <header className="app-header">
@@ -34,6 +53,14 @@ export default function App() {
       <main className="app-main">
         {game.phase === "setup" && (
           <Setup onComplete={handleSetupComplete} />
+        )}
+        {game.phase === "input" && (
+          <PlayerInput
+            player={game.players[game.currentPlayerIndex]}
+            playerIndex={game.currentPlayerIndex}
+            totalPlayers={game.numPlayers}
+            onSubmit={handlePlayerSubmit}
+          />
         )}
       </main>
     </div>
