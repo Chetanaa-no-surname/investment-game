@@ -1,16 +1,38 @@
-# React + Vite
+# The Investment Game
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A multiplayer decision-making game designed to illustrate how individual investment decisions affect collective outcomes.
 
-Currently, two official plugins are available:
+**Live Demo**: `https://Chetanaa-no-surname.github.io/investment-game/`  
+**Repository**: `https://github.com/Chetanaa-no-surname/investment-game`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Application Description
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+This is a browser-based, same-device multiplayer game where 2–4 players each allocate $100 between two assets:
 
-## Expanding the ESLint configuration
+- **Asset A (Riskless)**: The invested amount is returned in full.
+- **Asset B (Pooled)**: Total contributions are pooled, increased by 50%, and split equally among all players regardless of contribution.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Players take turns at the same screen. Once all players have submitted, a results screen shows the full breakdown: Total pool, Boosted pool, Individual payouts and highlights the highest investment total among the players
+
+
+## Getting Started
+
+### Prerequisites
+- Node.js ≥ 18
+- npm ≥ 9
+
+### Local Development
+```bash
+# Clone the repo
+git clone https://github.com/Chetanaa-no-surname/investment-game.git
+cd investment-game
+
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev
+
+```

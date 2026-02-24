@@ -40,3 +40,25 @@
 .read-the-docs {
   color: #888;
 }
+
+/*--------------------------------------------------*/
+.results-table{
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.results-table { 
+  border-collapse: collapse; 
+  border: 1px solid; 
+  margin-bottom: 20px;
+} 
+.results-table th, .results-table td { 
+  border: 1px solid; 
+  padding: 8px; 
+}
+
+.top-row{
+  background-color: rgba(119, 0, 255, 0.215);
+  font-weight: bold;
+}
