@@ -1,11 +1,11 @@
 import {useState} from 'react';
 
-export default function PlayerInput({ player, onSubmit }) {
+export default function PlayerInput({ player, playerIndex, totalPlayers, onSubmit }) {
   const [assetA, setAssetA] = useState('');
   const [assetB, setAssetB] = useState('');
   const [error, setError] = useState('');
 
-  const remainingBudget = 100 - (parseInt(assetA) || 0) - (parseInt(assetB) || 0);
+  const remaining = 100 - (parseInt(assetA) || 0) - (parseInt(assetB) || 0);
 
   const handleAChange = (val) => {
     setAssetA(val);

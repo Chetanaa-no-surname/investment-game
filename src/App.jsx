@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Setup from "./Setup";
 import PlayerInput from "./PlayerInput";
+import Results from "./Results";
 import "./App.css";
 
 const initialState = {
@@ -56,11 +57,15 @@ export default function App() {
         )}
         {game.phase === "input" && (
           <PlayerInput
+            key = {game.currentPlayerIndex} // reset form for each player
             player={game.players[game.currentPlayerIndex]}
             playerIndex={game.currentPlayerIndex}
             totalPlayers={game.numPlayers}
             onSubmit={handlePlayerSubmit}
           />
+        )}
+        {game.phase === "results" && (
+          <Results players={game.players} numPlayers={game.numPlayers} onReset={handleReset} />
         )}
       </main>
     </div>
