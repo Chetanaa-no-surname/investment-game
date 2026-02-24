@@ -1,45 +1,41 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-// import './App.css'
+import { useState } from "react";
+import Setup from "./components/Setup";
+import "./App.css";
 
-// function App() {
-//   const [count, setCount] = useState(0)
+const initialState = {
+  phase: "setup",
+  numPlayers: 2,
+  players: [],
+  currentPlayerIndex: 0,
+};
 
-//   return (
-//     <>
-//       <div>
-//         <a href="https://vite.dev" target="_blank">
-//           <img src={viteLogo} className="logo" alt="Vite logo" />
-//         </a>
-//         <a href="https://react.dev" target="_blank">
-//           <img src={reactLogo} className="logo react" alt="React logo" />
-//         </a>
-//       </div>
-//       <h1>Vite + React</h1>
-//       <div className="card">
-//         <button onClick={() => setCount((count) => count + 1)}>
-//           count is {count}
-//         </button>
-//         <p>
-//           Edit <code>src/App.jsx</code> and save to test HMR
-//         </p>
-//       </div>
-//       <p className="read-the-docs">
-//         Click on the Vite and React logos to learn more
-//       </p>
-//     </>
-//   )
-// }
-
-// export default App
-
-import Setup from "./Setup";
 
 export default function App() {
+  const [game, setGame] = useState(initialState);
+
+  const handleSetupComplete = ({ numPlayers, playerNames }) => {
+    const players = playerNames.map((name) => ({
+      name,
+      assetA: null,
+      assetB: null,
+      submitted: false,
+    }));
+    setGame({ phase: "input", numPlayers, players, currentPlayerIndex: 0 });
+  };
+
+  const handleReset = () => setGame(initialState);
+
   return (
-    <div>
-      <Setup />
+    <div className="app">
+      <header className="app-header">
+        <h1 className="app-title">The Investment Game</h1>
+      </header>
+
+      <main className="app-main">
+        {game.phase === "setup" && (
+          <Setup onComplete={handleSetupComplete} />
+        )}
+      </main>
     </div>
-  )
+  );
 }
