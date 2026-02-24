@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Setup from "./components/Setup";
+import Setup from "./Setup";
 import "./App.css";
 
 const initialState = {
